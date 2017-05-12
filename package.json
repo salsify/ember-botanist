@@ -1,6 +1,6 @@
 {
   "name": "ember-botanist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An Ember addon to provide the Botanist library",
   "keywords": [
     "ember-addon"
