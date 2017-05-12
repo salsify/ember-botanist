@@ -1,7 +1,7 @@
 {
   "name": "ember-botanist",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "An Ember addon to provide the Botanist library",
   "keywords": [
     "ember-addon"
   ],
