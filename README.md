@@ -1,26 +1,35 @@
-# ember-botanist
+# ember-botanist [![Build Status](https://travis-ci.org/salsify/ember-botanist.svg?branch=master)](https://travis-ci.org/salsify/ember-botanist)
 
-This README outlines the details of collaborating on this Ember addon.
+This addon is a thin wrapper over the [Botanist](https://github.com/salsify/botanist) library.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-botanist`
-* `npm install`
+```sh
+yarn add [--dev] ember-botanist
+```
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+See the [Botanist README](https://github.com/salsify/botanist) for more details on usage.
 
-## Running Tests
+```js
+import { transform, rule, simple } from 'botanist';
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+let doMath = transform({
+  @rule({ op: 'add', lhs: simple('left'), rhs: simple('right') })
+  add({ left, right }) {
+    return left + right;
+  },
 
-## Building
+  @rule({ op: 'sub', lhs: simple('left'), rhs: simple('right') })
+  subtract({ left, right }) {
+    return left - right;
+  }
+});
 
-* `ember build`
+doMath({ op: 'add', lhs: 1, rhs: 2 });
+// => 3
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+doMath({ op: 'sub', lhs: { op: 'add', lhs: 2, rhs: 2 }, rhs: 1 });
+// => 3
+```
